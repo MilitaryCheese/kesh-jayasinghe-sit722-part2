@@ -1,1 +1,27 @@
-# Write Kubernetes Deployment Script
+# Deployment yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-catalog-deployment
+  labels:
+    app: book-catalog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: book-catalog
+  template:
+    metadata:
+      labels:
+        app: book-catalog
+    spec:
+      containers:
+      - name: book-catalog-server
+        image: book-catalog-server:latest
+        imagePullPolicy: IfNotPresent 
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://task_6_2_progresql_instance_user:Td4f0wCY1hOtmNI39a15AOfEgqDUSQ2Q@dpg-crjpjll2ng1s73fj2qgg-a.singapore-postgres.render.com/task_6_2_progresql_instance"
+

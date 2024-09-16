@@ -1,0 +1,10 @@
+services:
+   server:
+     build:
+       context: .
+       dockerfile: Dockerfile
+     image: book-catalog
+     ports:
+       - 8000:8000
+     environment:
+       - DATABASE_URL=postgresql://task_6_2_progresql_instance_user:Td4f0wCY1hOtmNI39a15AOfEgqDUSQ2Q@dpg-crjpjll2ng1s73fj2qgg-a.singapore-postgres.render.com/task_6_2_progresql_instance
